@@ -4,14 +4,10 @@ function compareArrays(arr1, arr2) {
 }
 
 function getUsersNamesInAgeRange(users, gender) {
-	let count = (users.filter(item => item.gender == gender)).length;
-	if (count == 0) {
+	let usersConcreteGender = users.filter(user => user.gender == gender);	
+	if (usersConcreteGender.length === 0) {
 		return 0;
 	}
-	let result = (users.filter(item => item.gender == gender)
-		.map(users => users.age)
-		.reduce((sum, current) => sum + current))
-		/ count;
-	return result;
-
+	return usersConcreteGender.map(users => users.age)
+		.reduce((sum, current) => sum + current) / usersConcreteGender.length;
 }
